@@ -12,7 +12,7 @@
 Automatically detect backends & initialize virtual environments for your Python repo clones.
 
 > [!Warning]
-> This project is currently in the **Work in Progress** state.
+> 🚧 This project is currently in the **Work in Progress** state. 🚧
 >
 > Hit the `👁 Watch` button to know when it's ready to be tried out!
 
