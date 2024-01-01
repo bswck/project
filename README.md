@@ -21,6 +21,9 @@ Automatically detect backends & initialize virtual environments for your Python 
 - `project install` → install a Python project
 - `project env` → display info on the installed environment
 - `project config [OPTION] [del|set [VAL]]` → configure `pyproject.toml`
+- `project test` → run the detected test suite
+- `project lint` → run the detected linting suite
+- `project audit` → `project lint; project test`
 
 # Installation
 
