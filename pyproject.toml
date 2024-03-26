@@ -4,7 +4,7 @@
 
 [tool.poetry]
 name = "project"
-version = "0.0.0"
+version = "0.0.1"
 description = "Set up projects for development quickly."
 authors = ["bswck <bartoszpiotrslawecki@gmail.com>"]
 license = "MIT"
@@ -44,6 +44,8 @@ keyring = "^24.3.0"
 
 [tool.pytest.ini_options]
 addopts = "--doctest-modules"
+
+
 
 
 [tool.poetry.group.docs]
