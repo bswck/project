@@ -1,21 +1,24 @@
-_commit: bf2dfcf
+_commit: 0.0.2rc-180-g2a2d737
 _src_path: gh:bswck/skeleton
-author_username: bswck
+author: bswck
+cli: true
+copyright: Bartosz Sławecki
+description: Set up projects for development quickly.
 docs: true
-docs_slug: project
-email_address: bswck.dev@gmail.com
-github_username: bswck
-license_name: MIT
-org_full_name: Bartosz Sławecki
-package_name: project
-project_description: Automatically detect backends & initialize virtual environments
-    for your Python repo clones.
-publish_on_pypi: true
-pypi_project_description: Automatically detect backends & initialize virtual environments
-    for your Python repo clones.
-pypi_project_name: project
-python_version: '3.8'
-repo_name: project
+email: bartoszpiotrslawecki@gmail.com
+github: bswck
+license: MIT
+package: project
+precommit: true
+pypi: true
+pypi_description: Set up projects for development quickly.
+pypi_project: project
+pypy: true
+python: '3.8'
+python_until: '4.0'
+repo: project
+rtd: project
 tests: true
-use_precommit: true
+tidelift: false
 visibility: public
+wip: true

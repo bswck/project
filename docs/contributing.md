@@ -1,8 +1,8 @@
 
 <!--
-This file was generated from bswck/skeleton@bf2dfcf.
+This file was generated from bswck/skeleton@0.0.2rc-180-g2a2d737.
 Instead of changing this particular file, you might want to alter the template:
-https://github.com/bswck/skeleton/tree/bf2dfcf/project/%23%25%20if%20docs%20%25%23docs%23%25%20endif%20%25%23/contributing.md.jinja
+https://github.com/bswck/skeleton/tree/0.0.2rc-180-g2a2d737/project/%23%25%20if%20docs%20%25%23docs%23%25%20endif%20%25%23/contributing.md.jinja
 -->
 # Contributing to [project](https://github.com/bswck/project) 🎉
 Contributions are very welcome. 🚀
@@ -47,16 +47,12 @@ Ready to contribute? Here's a quick guide on how to set up project and make a ch
 
 
 <!--
-This section was generated from bswck/skeleton@bf2dfcf.
+This section was generated from bswck/skeleton@0.0.2rc-180-g2a2d737.
 Instead of changing this particular file, you might want to alter the template:
-https://github.com/bswck/skeleton/tree/bf2dfcf/project/%23%25%20if%20docs%20%25%23docs%23%25%20endif%20%25%23/contributing.md.jinja
+https://github.com/bswck/skeleton/tree/0.0.2rc-180-g2a2d737/project/%23%25%20if%20docs%20%25%23docs%23%25%20endif%20%25%23/contributing.md.jinja
 -->
-
 !!! Note
     If you use Windows, it is highly recommended to complete the installation in the way presented below through [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install).
-
-
-
 1.  Fork the [project repository](https://github.com/bswck/project) on GitHub.
 
 1.  [Install Poetry](https://python-poetry.org/docs/#installation).<br/>
@@ -88,9 +84,8 @@ https://github.com/bswck/skeleton/tree/bf2dfcf/project/%23%25%20if%20docs%20%25%
 
     ```shell
     poetry shell
-    pre-commit install --hook-type pre-commit --hook-type pre-push
+    pre-commit install
     ```
-
 
 1.  Create a branch for local development:
 
@@ -109,7 +104,7 @@ https://github.com/bswck/skeleton/tree/bf2dfcf/project/%23%25%20if%20docs%20%25%
 1.  Commit your changes and push your branch to GitHub:
 
     ```shell
-    git add .
+    git add -A
     git commit -m "Short description of changes (50 chars max)" -m "Optional extended description"
     git push origin name-of-your-bugfix-or-feature
     ```

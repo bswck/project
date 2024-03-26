@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # (C) 2023–present Bartosz Sławecki (bswck)
 #
-# This file was generated from bswck/skeleton@bf2dfcf.
+# This file was generated from bswck/skeleton@0.0.2rc-180-g2a2d737.
 # Instead of changing this particular file, you might want to alter the template:
-# https://github.com/bswck/skeleton/tree/bf2dfcf/project/scripts/release.py.jinja
+# https://github.com/bswck/skeleton/tree/0.0.2rc-180-g2a2d737/project/scripts/release.py.jinja
 #
 """
 Automate the release process by updating local files, creating and pushing a new tag.
@@ -12,7 +12,7 @@ The complete the release process, create a GitHub release.
 GitHub Actions workflow will publish the package to PyPI via Trusted Publisher.
 
 Usage:
-$ poe release [major|minor|patch|MAJOR.MINOR.PATCH]
+`$ poe release [major|minor|patch|MAJOR.MINOR.PATCH]`
 """
 from __future__ import annotations
 
@@ -62,9 +62,7 @@ def _setup_logging() -> None:
 
 def _command(prompt: str, /) -> str:
     data = subprocess.check_output(prompt, shell=True, text=True)
-    if data[-1:] == "\n":
-        data = data[:-1]
-    return data
+    return data[: -(data[-1:] == "\n") or None]
 
 
 def _run(*prompt: str) -> None:
@@ -72,8 +70,14 @@ def _run(*prompt: str) -> None:
     subprocess.run([*prompt], check=True)
 
 
-def release(version: str, /) -> None:
+def release(version: str, /, next_version: str = "patch") -> None:
     """Release a semver version."""
+    print(welcome_msg := "Simple release utility.".title())
+    print("-" * len(welcome_msg))
+    _LOGGER.info("Release version: %s", version)
+    _LOGGER.info("Post-release version: %s", next_version)
+
+    _run("pre-commit", "run", "--all-files", "--hook-stage", "pre-push")
     changed_files = _command("git status --porcelain")
 
     if changed_files:
@@ -165,20 +169,44 @@ def release(version: str, /) -> None:
                 )
 
             _run(
-                "gh", "release", "create", new_version, "--generate-notes",
-                "--notes-file", temp_file.name,
+                "gh",
+                "release",
+                "create",
+                new_version,
+                "--generate-notes",
+                "--notes-file",
+                temp_file.name,
             )
             os.unlink(temp_file.name)
         else:
             _run("gh", "release", "create", new_version, "--generate-notes")
 
+    _LOGGER.info("Done.")
+    _LOGGER.info("Bumping to the next patch version...")
+    _run("poetry", "version", next_version)
+
 
 def main(argv: list[str] | None = None) -> None:
     """Run the script."""
     _setup_logging()
+    current_version = _command("poetry version --short")
 
     parser = argparse.ArgumentParser(description="Release a semver version.")
-    parser.add_argument("version", type=str)
+    parser.add_argument(
+        "version",
+        nargs="?",
+        default=current_version,
+        help=(
+            "The version to release. Defaults to the "
+            f"current version ({current_version})"
+        ),
+    )
+    parser.add_argument(
+        "-n",
+        "--next",
+        dest="next_version",
+        default="patch",
+    )
     release(*vars(parser.parse_args(argv)).values())
 
 
