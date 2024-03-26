@@ -3,7 +3,7 @@
 # https://github.com/bswck/skeleton/tree/0.0.2rc-180-g2a2d737/project/pyproject.toml.jinja
 
 [tool.poetry]
-name = "project"
+name = ".project"
 version = "0.0.1"
 description = "Set up projects for development quickly."
 authors = ["bswck <bartoszpiotrslawecki@gmail.com>"]
