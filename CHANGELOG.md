@@ -7,3 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 <!-- insertion marker -->
 
+## [v0.0.0](https://github.com/bswck/project/tree/v0.0.0) (2024-03-26)
+
+
+No significant changes.
